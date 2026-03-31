@@ -12,8 +12,8 @@ const ENVIRONMENT = {
     },
     PRODUCTION: {
         name: "production",
-        baseUrl: "https://server.uemcseaiml.org:8022/blood",
-        description: "UEM Server (Production)"
+        baseUrl: "https://server.uemcseaiml.org/blood",
+        description: "UEM Server (Production) via nginx proxy"
     }
 };
 
