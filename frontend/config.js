@@ -23,10 +23,10 @@ const ENVIRONMENT = {
 // ⬇️ UNCOMMENT ONE OF THESE TWO LINES:
 //
 // For LOCAL development (test locally on your machine):
-const ACTIVE_ENV = ENVIRONMENT.LOCAL;
+// const ACTIVE_ENV = ENVIRONMENT.LOCAL;
 //
 // For PRODUCTION deployment (Vercel → Your UEM Server):
-// const ACTIVE_ENV = ENVIRONMENT.PRODUCTION;
+const ACTIVE_ENV = ENVIRONMENT.PRODUCTION;
 //
 // ─────────────────────────────────────────────────
 
