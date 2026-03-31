@@ -5,11 +5,11 @@
 
 // ─── API BASE URL ───────────────────────────────
 // Option 1: Local Development (FastAPI on port 8000)
-const BACKEND_PORT = 8000;
-const BASE_URL = window.location.port == BACKEND_PORT ? '' : `http://127.0.0.1:${BACKEND_PORT}`;
+//const BACKEND_PORT = 8022;
+//const BASE_URL = window.location.port == BACKEND_PORT ? '' : `http://127.0.0.1:${BACKEND_PORT}`;
 
 // Option 2: Remote Production (UEM Server)
-// const BASE_URL = "https://server.uemcseaiml.org:8022/blood";
+const BASE_URL = "https://server.uemcseaiml.org:8022/blood";
 
 // ─── STATE ──────────────────────────────────────
 const state = {
