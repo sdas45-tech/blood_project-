@@ -1680,93 +1680,1056 @@ body::before {
 }
 
 /* ── Responsive ─────────────────────────────── */
+
+/* ═══════════════════════════════════════════ */
+/* TABLET & MOBILE (768px and below)          */
+/* ═══════════════════════════════════════════ */
 @media (max-width: 768px) {
+    :root {
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+    }
+
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .navbar-inner {
+        height: 56px;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+        gap: 8px;
+    }
+
+    .navbar-brand .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
     .navbar-links {
         display: none;
     }
 
     .hamburger {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translateY(10px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-10px);
     }
 
     .navbar-links.mobile-open {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 64px;
+        top: 56px;
         left: 0;
         right: 0;
-        background: rgba(10, 14, 26, 0.95);
+        background: rgba(10, 14, 26, 0.98);
         backdrop-filter: blur(20px);
-        padding: 16px;
+        padding: 12px;
         border-bottom: 1px solid var(--border-glass);
+        gap: 4px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .navbar-links.mobile-open a {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 80px 0 40px;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        margin-bottom: 12px;
+    }
+
+    .hero .subtitle {
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+        margin-bottom: 20px;
+    }
+
+    .hero-badge {
+        padding: 5px 14px;
+        font-size: 0.75rem;
+        margin-bottom: 16px;
     }
 
     .hero-stats {
-        gap: 20px;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .hero-stat {
+        flex: 0 1 calc(50% - 8px);
     }
 
     .hero-stat .value {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
+    /* Time Widget */
     .time-widget {
-        display: none;
+        top: 70px;
+        right: 12px;
+        padding: 10px 14px;
     }
 
-    .hospital-grid {
-        grid-template-columns: 1fr;
+    .time-widget .time-value {
+        font-size: 1rem;
     }
 
-    .doctor-grid {
-        grid-template-columns: 1fr;
+    /* Section */
+    .section {
+        padding: 40px 0;
     }
 
-    .cycle-timeline {
-        grid-template-columns: 1fr;
+    .section-header {
+        margin-bottom: 32px;
     }
 
-    .supplements-grid {
-        grid-template-columns: 1fr;
+    .section-header h2 {
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        margin-bottom: 6px;
     }
 
-    .food-items-grid {
-        grid-template-columns: 1fr;
+    .section-header p {
+        font-size: 0.9rem;
     }
 
-    .tips-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .health-tabs {
-        overflow-x: auto;
-        border-radius: var(--radius-lg);
-    }
-
-    .health-tab {
-        font-size: 0.76rem;
-        padding: 8px 12px;
-    }
-}
-
-@media (max-width: 480px) {
     .container {
         padding: 0 16px;
     }
 
+    /* Glass Cards */
     .glass-card {
         padding: 20px;
     }
 
+    /* Upload Zone */
+    .upload-zone {
+        padding: 32px 20px;
+        border-radius: var(--radius-lg);
+    }
+
+    .upload-zone .upload-icon {
+        font-size: 2.4rem;
+        margin-bottom: 12px;
+    }
+
+    .upload-zone h3 {
+        font-size: 1.1rem;
+    }
+
+    .upload-zone p {
+        font-size: 0.82rem;
+    }
+
+    .preview-image {
+        max-width: 220px;
+        max-height: 220px;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+
+    .btn-sm {
+        padding: 7px 14px;
+        font-size: 0.78rem;
+    }
+
+    .btn-group {
+        gap: 10px;
+    }
+
+    /* Results */
     .result-card {
         padding: 20px;
+        margin-bottom: 16px;
+    }
+
+    .result-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .result-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+    }
+
+    .result-header h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Probability Grid */
+    .prob-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .prob-item {
+        padding: 10px;
+        font-size: 0.78rem;
+    }
+
+    /* Steps */
+    .steps-list li {
+        padding: 10px 0;
+        font-size: 0.85rem;
+        gap: 10px;
+    }
+
+    .steps-list .step-num {
+        width: 24px;
+        height: 24px;
+        font-size: 0.65rem;
+    }
+
+    /* Hospital Grid */
+    .hospital-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hospital-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .hospital-card {
         padding: 18px;
     }
 
+    .hospital-card h4 {
+        font-size: 1rem;
+        padding-right: 0;
+    }
+
+    .hospital-card .emergency-badge,
+    .hospital-card .open-badge {
+        position: relative;
+        top: auto;
+        right: auto;
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+
+    .hospital-card .meta-item {
+        font-size: 0.78rem;
+    }
+
+    /* Doctor Grid */
+    .doctor-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .doctor-card {
+        padding: 16px;
+    }
+
+    .doctor-card .doc-header {
+        gap: 10px;
+    }
+
+    .doctor-card .doc-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .doctor-card .doc-name {
+        font-size: 0.95rem;
+    }
+
+    .doctor-card .doc-spec {
+        font-size: 0.78rem;
+    }
+
+    .doctor-card .doc-meta {
+        gap: 5px;
+    }
+
+    .doctor-card .doc-meta-item {
+        font-size: 0.78rem;
+    }
+
+    .availability-badge {
+        font-size: 0.7rem;
+        padding: 2px 8px;
+    }
+
+    /* Filters */
+    .doctor-filters {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filter-select,
+    .filter-input {
+        width: 100%;
+    }
+
+    .radius-filter {
+        width: 100%;
+    }
+
+    .radius-filter input[type="range"] {
+        width: 100%;
+    }
+
+    /* Health Tabs */
+    .health-tabs {
+        gap: 2px;
+        padding: 4px;
+        margin-bottom: 24px;
+    }
+
+    .health-tab {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+
+    /* Food Category */
+    .food-category {
+        margin-bottom: 20px;
+    }
+
+    .food-category-header {
+        margin-bottom: 12px;
+    }
+
+    .food-category-header .cat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .food-category-header h4 {
+        font-size: 1rem;
+    }
+
+    .food-items-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .food-item {
+        padding: 12px;
+    }
+
+    .food-item .food-name {
+        font-size: 0.88rem;
+    }
+
+    .food-item .food-benefit {
+        font-size: 0.75rem;
+    }
+
+    /* Avoid Cards */
+    .avoid-card {
+        padding: 16px;
+        margin-bottom: 12px;
+    }
+
+    .avoid-chip {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+
+    /* Cycle Timeline */
+    .cycle-timeline {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .phase-card {
+        padding: 18px;
+    }
+
+    .phase-card .phase-icon {
+        font-size: 1.8rem;
+    }
+
+    .phase-card .phase-name {
+        font-size: 1.05rem;
+    }
+
+    .focus-tag {
+        font-size: 0.68rem;
+    }
+
+    /* Supplements Grid */
+    .supplements-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .supplement-card {
+        padding: 16px;
+    }
+
+    .supplement-card .supp-name {
+        font-size: 0.98rem;
+    }
+
+    .supplement-card .supp-dosage {
+        font-size: 0.8rem;
+    }
+
+    /* Warning Signs */
+    .warning-item {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .warning-item .warn-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .warning-item .warn-sign {
+        font-size: 0.85rem;
+    }
+
+    /* Tips Grid */
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .tip-card {
+        padding: 12px;
+        font-size: 0.82rem;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+        padding: 12px;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .disclaimer p {
+        font-size: 0.78rem;
+    }
+
+    /* Toast */
+    .toast-container {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+    }
+
+    .toast {
+        max-width: 100%;
+        padding: 12px 16px;
+        font-size: 0.82rem;
+    }
+
+    /* Map */
+    #map {
+        height: 300px !important;
+    }
+
+    /* Empty State */
+    .empty-state {
+        padding: 32px 16px;
+    }
+
+    .empty-state .empty-icon {
+        font-size: 2.4rem;
+    }
+
+    .empty-state h4 {
+        font-size: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 24px 0;
+        font-size: 0.78rem;
+    }
+}
+
+/* ═══════════════════════════════════════════ */
+/* SMALL PHONES (480px and below)             */
+/* ═══════════════════════════════════════════ */
+@media (max-width: 480px) {
+    :root {
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .navbar {
+        padding: 0 12px;
+    }
+
+    .navbar-inner {
+        height: 52px;
+    }
+
+    .navbar-brand {
+        font-size: 0.95rem;
+    }
+
+    .navbar-brand .logo-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+    }
+
+    .container {
+        padding: 0 12px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 60px 0 32px;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        margin-bottom: 10px;
+    }
+
+    .hero .subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 16px;
+    }
+
+    .hero-badge {
+        padding: 4px 12px;
+        font-size: 0.7rem;
+        margin-bottom: 12px;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-stat {
+        flex: 1;
+    }
+
+    .hero-stat .value {
+        font-size: 1rem;
+    }
+
+    .hero-stat .label {
+        font-size: 0.65rem;
+    }
+
+    /* Time Widget */
+    .time-widget {
+        top: 60px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+
+    .time-widget .time-value {
+        font-size: 0.85rem;
+    }
+
+    .time-widget .time-label {
+        font-size: 0.65rem;
+    }
+
+    /* Section */
+    .section {
+        padding: 32px 0;
+    }
+
+    .section-header {
+        margin-bottom: 24px;
+    }
+
+    .section-header .section-tag {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+    }
+
+    .section-header h2 {
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        margin-bottom: 4px;
+    }
+
+    .section-header p {
+        font-size: 0.8rem;
+    }
+
+    /* Glass Cards */
+    .glass-card {
+        padding: 16px;
+        border-radius: var(--radius-md);
+    }
+
+    /* Upload Zone */
+    .upload-zone {
+        padding: 24px 16px;
+        border-radius: var(--radius-md);
+    }
+
+    .upload-zone .upload-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .upload-zone h3 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+
+    .upload-zone p {
+        font-size: 0.75rem;
+    }
+
+    .upload-zone .btn-browse {
+        padding: 8px 18px;
+        font-size: 0.78rem;
+        margin-top: 12px;
+    }
+
+    /* Preview */
+    .preview-container {
+        margin-top: 16px;
+    }
+
+    .preview-image {
+        max-width: 180px;
+        max-height: 180px;
+        margin-bottom: 12px;
+    }
+
+    .file-info {
+        font-size: 0.78rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+
+    .btn-sm {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    .btn-group {
+        gap: 8px;
+        flex-direction: column;
+    }
+
+    .btn-group .btn {
+        width: 100%;
+    }
+
+    /* Results */
+    .results-section {
+        margin-top: 16px;
+    }
+
+    .result-card {
+        padding: 16px;
+        margin-bottom: 12px;
+        border-radius: var(--radius-md);
+    }
+
+    .result-header {
+        margin-bottom: 16px;
+        gap: 10px;
+    }
+
+    .result-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    .result-header h3 {
+        font-size: 1.05rem;
+    }
+
+    .result-header .confidence {
+        font-size: 0.75rem;
+    }
+
+    /* Confidence Bar */
+    .confidence-bar-track {
+        height: 6px;
+        margin: 12px 0;
+    }
+
+    /* Probability Grid */
     .prob-grid {
         grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .prob-item {
+        padding: 8px;
+        border-radius: var(--radius-sm);
+    }
+
+    .prob-item .prob-name {
+        font-size: 0.75rem;
+    }
+
+    .prob-item .prob-value {
+        font-size: 0.95rem;
+    }
+
+    /* Steps */
+    .steps-list li {
+        padding: 8px 0;
+        font-size: 0.8rem;
+        gap: 8px;
+    }
+
+    .steps-list .step-num {
+        width: 22px;
+        height: 22px;
+        font-size: 0.6rem;
+    }
+
+    /* Hospital/Doctor */
+    .hospital-controls,
+    .doctor-filters {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .hospital-controls .btn,
+    .doctor-filters .btn {
+        width: 100%;
+    }
+
+    .filter-select,
+    .filter-input {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .radius-filter {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .radius-filter label {
+        width: 100%;
+    }
+
+    .radius-filter input[type="range"] {
+        width: 100%;
+    }
+
+    .location-status {
+        width: 100%;
+        margin-bottom: 16px;
+        font-size: 0.75rem;
+    }
+
+    /* Tabs */
+    .health-tabs {
+        gap: 1px;
+        padding: 3px;
+    }
+
+    .health-tab {
+        padding: 6px 10px;
+        font-size: 0.68rem;
+    }
+
+    /* Food Items */
+    .food-items-grid {
+        gap: 8px;
+    }
+
+    .food-item {
+        padding: 10px;
+        border-radius: var(--radius-sm);
+    }
+
+    .food-item .food-name {
+        font-size: 0.82rem;
+    }
+
+    .food-item .food-benefit {
+        font-size: 0.7rem;
+    }
+
+    /* Avoid Cards */
+    .avoid-card {
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: var(--radius-md);
+    }
+
+    .avoid-card .avoid-items {
+        gap: 6px;
+    }
+
+    .avoid-chip {
+        font-size: 0.7rem;
+        padding: 2px 8px;
+    }
+
+    /* Cycles & Supplements */
+    .cycle-timeline,
+    .supplements-grid {
+        gap: 12px;
+    }
+
+    .phase-card {
+        padding: 14px;
+    }
+
+    .phase-card .phase-icon {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+    }
+
+    .phase-card .phase-name {
+        font-size: 0.95rem;
+    }
+
+    .phase-card .phase-days {
+        font-size: 0.75rem;
+    }
+
+    .focus-tag {
+        font-size: 0.65rem;
+        padding: 2px 8px;
+    }
+
+    /* Warnings & Tips */
+    .warning-item {
+        padding: 10px;
+    }
+
+    .warning-item .warn-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 0.75rem;
+    }
+
+    .tips-grid {
+        gap: 8px;
+    }
+
+    .tip-card {
+        padding: 10px;
+        font-size: 0.75rem;
+        border-radius: var(--radius-sm);
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+        padding: 10px;
+        gap: 6px;
+        margin-bottom: 12px;
+        border-radius: var(--radius-sm);
+    }
+
+    .disclaimer .disc-icon {
+        font-size: 1rem;
+    }
+
+    .disclaimer p {
+        font-size: 0.72rem;
+    }
+
+    /* Toast */
+    .toast-container {
+        bottom: 12px;
+        right: 12px;
+        left: 12px;
+    }
+
+    .toast {
+        padding: 10px 12px;
+        font-size: 0.78rem;
+        gap: 8px;
+        border-radius: var(--radius-sm);
+    }
+
+    /* Maps */
+    #map {
+        height: 250px !important;
+    }
+
+    .leaflet-control-container {
+        font-size: 0.85rem;
+    }
+
+    /* Empty State */
+    .empty-state {
+        padding: 24px 12px;
+    }
+
+    .empty-state .empty-icon {
+        font-size: 2rem;
+    }
+
+    .empty-state h4 {
+        font-size: 0.95rem;
+    }
+
+    .empty-state p {
+        font-size: 0.78rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 16px 0;
+        margin-top: 24px;
+        font-size: 0.72rem;
+    }
+}
+
+/* ═══════════════════════════════════════════ */
+/* SMALL LANDSCAPE (max-height: 500px)        */
+/* ═══════════════════════════════════════════ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 40px 0 20px;
+    }
+
+    .navbar-inner {
+        height: 48px;
+    }
+
+    .section {
+        padding: 24px 0;
+    }
+
+    .time-widget {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+
+    .hero .subtitle {
+        font-size: 0.8rem;
+    }
+}
+
+/* ═══════════════════════════════════════════ */
+/* TOUCH-FRIENDLY ADJUSTMENTS                 */
+/* ═══════════════════════════════════════════ */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 20px;
+    }
+
+    .hamburger {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Remove hover effects */
+    .btn:hover {
+        transform: none;
+    }
+
+    .glass-card:hover {
+        transform: none;
+    }
+
+    .hospital-card:hover,
+    .doctor-card:hover {
+        transform: none;
+    }
+
+    /* Add active states instead */
+    .btn:active {
+        opacity: 0.8;
+    }
+
+    .glass-card:active {
+        opacity: 0.9;
+    }
+
+    /* Better spacing for touch */
+    .navbar-links a {
+        padding: 10px 14px;
+    }
+
+    .steps-list li {
+        padding: 14px 0;
+    }
+
+    .tip-card {
+        padding: 14px;
+    }
+}
+
+/* ═════════════════════════════════════════════ */
+/* Print Styles                                  */
+/* ═════════════════════════════════════════════ */
+@media print {
+    .navbar,
+    .hamburger,
+    .time-widget,
+    .btn-group,
+    .toast-container,
+    .loading-overlay {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .glass-card,
+    .result-card {
+        border: 1px solid #ccc;
+        background: white;
+        box-shadow: none;
     }
 }
