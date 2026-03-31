@@ -19,15 +19,16 @@ const ENVIRONMENT = {
 
 // ─── ACTIVE CONFIGURATION ───────────────────────
 // MANUALLY TOGGLE WHICH ENVIRONMENT TO USE:
-// 1. For local development & testing: Set to ENVIRONMENT.LOCAL
-// 2. For production/Vercel deployment: Set to ENVIRONMENT.PRODUCTION
+// 
+// ⬇️ UNCOMMENT ONE OF THESE TWO LINES:
 //
-// WORKFLOW:
-// During Development:
-//   - Set to LOCAL, test backend locally
-// Before GitHub Push & Vercel Deploy:
-//   - Set to PRODUCTION, commit & push
-const ACTIVE_ENV = ENVIRONMENT.PRODUCTION;
+// For LOCAL development (test locally on your machine):
+const ACTIVE_ENV = ENVIRONMENT.LOCAL;
+//
+// For PRODUCTION deployment (Vercel → Your UEM Server):
+// const ACTIVE_ENV = ENVIRONMENT.PRODUCTION;
+//
+// ─────────────────────────────────────────────────
 
 // ─── DERIVED CONFIGURATION ──────────────────────
 const BASE_URL = ACTIVE_ENV.baseUrl;
