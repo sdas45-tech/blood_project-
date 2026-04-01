@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "buildCommand": "cd backend && python download_model.py",
   "builds": [
     {
       "src": "backend/main.py",
