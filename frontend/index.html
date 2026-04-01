@@ -145,8 +145,19 @@
                         🔍 Find Hospitals
                     </button>
                     <button class="btn btn-secondary btn-sm" id="refreshLocationBtn">
-                        📍 Refresh Location
+                        📍 Refresh GPS
                     </button>
+                </div>
+
+                <div class="manual-location glass-card animate-in" style="margin-bottom:24px; padding: 16px;">
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <input type="text" id="locationSearchInput" placeholder="Enter City or Address (e.g. Newtown, Kolkata)" 
+                               style="flex:1; background:var(--bg-glass); border:1px solid var(--border-glass); color:white; padding:10px; border-radius:var(--radius-md);">
+                        <button class="btn btn-primary btn-sm" id="searchLocationBtn">📍 Search</button>
+                    </div>
+                    <p style="font-size:0.75rem; color:var(--text-muted); margin-top:8px">
+                        💡 Tip: You can also <strong>click anywhere on the map</strong> below to set your location manually.
+                    </p>
                 </div>
 
                 <!-- Map -->

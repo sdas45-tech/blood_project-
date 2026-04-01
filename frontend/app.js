@@ -87,7 +87,7 @@ async function fallbackLocation(statusEl, errMsg) {
 function getLocation() {
     const statusEl = $('#locationStatus');
     statusEl.className = 'location-status';
-    statusEl.textContent = '📍 Detecting your location natively...';
+    statusEl.textContent = '📍 Detecting your location...';
 
     if (!navigator.geolocation) {
         fallbackLocation(statusEl, 'Not supported by your browser');
@@ -100,14 +100,46 @@ function getLocation() {
             state.lon = pos.coords.longitude;
             state.locationReady = true;
             statusEl.className = 'location-status active';
-            statusEl.textContent = `📍 Location: ${state.lat.toFixed(4)}°N, ${state.lon.toFixed(4)}°E`;
-            showToast('Location detected successfully', 'success');
+            statusEl.textContent = `📍 GPS Location: ${state.lat.toFixed(4)}°N, ${state.lon.toFixed(4)}°E (Accuracy: ${Math.round(pos.coords.accuracy)}m)`;
+            showToast('High-accuracy GPS location detected', 'success');
+            // Update map if it exists
+            if (state.hospitalMap) state.hospitalMap.setView([state.lat, state.lon], 14);
         },
         (err) => {
             fallbackLocation(statusEl, err.message);
         },
-        { enableHighAccuracy: true, timeout: 10000 }
+        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
     );
+}
+
+// ─── MANUAL SEARCH ─────────────────────────────
+async function searchLocation() {
+    const input = $('#locationSearchInput');
+    const query = input.value.trim();
+    if (!query) return showToast('Please enter an address', 'warning');
+
+    const statusEl = $('#locationStatus');
+    statusEl.textContent = `🔍 Searching for: ${query}...`;
+
+    try {
+        const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=1`);
+        const data = await res.json();
+
+        if (data && data.length > 0) {
+            state.lat = parseFloat(data[0].lat);
+            state.lon = parseFloat(data[0].lon);
+            state.locationReady = true;
+            statusEl.className = 'location-status active';
+            statusEl.textContent = `📍 Selected Location: ${data[0].display_name.split(',')[0]} (${state.lat.toFixed(2)}, ${state.lon.toFixed(2)})`;
+            showToast('Location updated successfully', 'success');
+            if (state.hospitalMap) state.hospitalMap.setView([state.lat, state.lon], 14);
+        } else {
+            throw new Error('Address not found');
+        }
+    } catch (e) {
+        showToast(`Search failed: ${e.message}`, 'error');
+        statusEl.textContent = '❌ Address not found';
+    }
 }
 
 // ─── FILE UPLOAD ────────────────────────────────
@@ -323,6 +355,17 @@ function renderHospitalMap(hospitals) {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
+
+    // Click map to update location
+    map.on('click', (e) => {
+        state.lat = e.latlng.lat;
+        state.lon = e.latlng.lng;
+        state.locationReady = true;
+        $('#locationStatus').className = 'location-status active';
+        $('#locationStatus').textContent = `📍 Manually Set: ${state.lat.toFixed(4)}, ${state.lon.toFixed(4)}`;
+        showToast('Location set at clicked point!', 'success');
+        renderHospitalMap(hospitals); // Redraw
+    });
 
     // User marker (blue)
     L.marker([state.lat, state.lon], {
@@ -760,5 +803,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Button handlers
     $('#findHospitalsBtn').addEventListener('click', findHospitals);
     $('#refreshLocationBtn').addEventListener('click', getLocation);
+    $('#searchLocationBtn').addEventListener('click', searchLocation);
     $('#searchDoctorsBtn').addEventListener('click', searchDoctors);
+    
+    // Search on Enter key
+    $('#locationSearchInput').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') searchLocation();
+    });
 });
