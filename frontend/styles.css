@@ -151,6 +151,7 @@ body::before {
     font-size: 1.3rem;
     color: var(--text-primary);
     text-decoration: none;
+    z-index: 1001;
 }
 
 .navbar-brand .logo-icon {
@@ -737,7 +738,7 @@ body::before {
 
 .hospital-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
 
@@ -2592,7 +2593,7 @@ body::before {
     }
 
     /* Maps */
-    #map {
+    #hospitalMap {
         height: 250px !important;
     }
 
