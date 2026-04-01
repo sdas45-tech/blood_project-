@@ -1,4 +1,5 @@
 import os
+import json
 from pathlib import Path
 import tensorflow as tf
 from tensorflow import keras
@@ -159,4 +160,12 @@ model.fit(
 # ==========================
 loss, acc = model.evaluate(val_ds)
 print(f"\n✅ Final Accuracy: {acc*100:.2f}%")
+
+# ==========================
+# SAVE CLASS NAMES
+# ==========================
+class_names_path = Path("models") / "class_names.json"
+with open(class_names_path, "w") as f:
+    json.dump(class_names, f, indent=2)
+print(f"✅ Class names saved to {class_names_path}")
 # ✅ Final Accuracy: 97.47%

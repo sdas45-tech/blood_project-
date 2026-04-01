@@ -1111,5 +1111,5 @@ if __name__ == "__main__":
     # Use 0.0.0.0 to allow access from external frontend (like Vercel)
     # Port 8022 as requested for your server
     print("\nStarting Blood Health Advisor on port 8022...")
-    print("▶ Frontend: Use BASE_URL = 'https://server.uemcseaiml.org:8022/blood'")
+    print("▶ Frontend: Use BASE_URL = 'http://127.0.0.1:8022' (LOCAL) or 'https://server.uemcseaiml.org:8022/blood' (PRODUCTION)")
     uvicorn.run("main:app", host="0.0.0.0", port=8022, reload=True)
